@@ -1,0 +1,14 @@
+$primary: black;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+$glavna: $red-400;
+.ozadje {
+    background-color: red;
+}
+
+
+.kanta {
+    @extend .ozadje;
+    @extend .col-lg-6;
+}
