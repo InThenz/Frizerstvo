@@ -2,13 +2,67 @@ $primary: black;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-$glavna: $red-400;
-.ozadje {
-    background-color: red;
+
+body {
+    font-family: serif;
+    font-weight: bold;
+}
+
+p {
+    font-size: 20px;
+}
+
+nav {
+    background-color: #DACCC1;
+}
+
+footer {
+    background-color: #DACCC1;
 }
 
 
-.kanta {
-    @extend .ozadje;
-    @extend .col-lg-6;
+
+.hero {
+    background-image: url("../slike/frontpage.jpg");
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 80vh; 
 }
+
+.naroci-btn {
+    background-color: #D79762; // taka oranžno-bež
+    color: white;
+    padding: 10px 40px;
+    border-radius: 0;
+    border: none;
+    
+}
+
+.sivi-box {
+    border: 1px solid #aaa;
+    padding: 50px;
+    max-width: 150vh;
+    margin: auto;
+}
+
+.card-custom {
+    border: 1px solid #aaa;
+    padding: 30px;
+    background-color: #f5f5f5;
+    height: 100%;
+}
+
+.sivi-box-mnenje img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}
+
+.sivi-box-mnenje hr {
+    margin: 20px 0;
+}
+
+
+
