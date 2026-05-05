@@ -4,8 +4,10 @@ $primary: black;
 
 
 body {
-    font-family: serif;
+    font-family: 'Times New Roman', serif;
     font-weight: bold;
+
+    margin: 0;
 }
 
 p {
@@ -15,6 +17,35 @@ p {
 nav {
     background-color: #DACCC1;
 }
+
+
+.custom-menu {
+    position: absolute;
+    top: 100px;          // pod navbarjem
+    right: 10px;        // desno
+    width: 250px;
+
+    background-color: #DACCC1;
+    border: 1px solid #aaa;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #aaa;
+
+    z-index: 1000;
+}
+
+
+@media (min-width: 992px) {
+    .custom-menu {
+        position: static;
+        width: auto;
+        background: none;
+        border: none;
+        padding: 0;
+    }
+}
+
+
 
 footer {
     background-color: #DACCC1;
@@ -64,5 +95,27 @@ footer {
     margin: 20px 0;
 }
 
+
+
+
+
+.calendar-grid {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.day {
+    padding: 12px;
+    border: 1px solid #aaa;
+    background: transparent;
+    cursor: pointer;
+}
+
+.day.selected {
+    background-color: #6c8ca3;
+    color: white;
+}
 
 
