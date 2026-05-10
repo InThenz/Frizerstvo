@@ -55,5 +55,28 @@ document.getElementById("nextMonth").onclick = () => {
   renderCalendar(currentDate);
 };
 
+
+
+
+const timeButtons = document.querySelectorAll(".time-btn");
+
+let selectedTime = null;
+
+timeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+
+    // odstrani selected iz vseh
+    timeButtons.forEach(btn => btn.classList.remove("selected"));
+
+    // dodaj selected na kliknjenega
+    button.classList.add("selected");
+
+    // shrani čas
+    selectedTime = button.textContent;
+
+    console.log("Izbran čas:", selectedTime);
+  });
+});
+
 // start
 renderCalendar(currentDate);
