@@ -149,3 +149,96 @@ footer {
 }
 
 
+
+
+
+
+
+.hero-onas {
+            background-image: url("../slike/frizer_header.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-onas::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+        }
+        .hero-onas .hero-naslov {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        .hero-onas h1 {
+            color: white;
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+        }
+        .hero-onas h1 span {
+            color: #D79762;
+            font-style: italic;
+        }
+        .onas-box {
+            border: 1px solid #aaa;
+            padding: 20px;
+            background-color: #fff;
+        }
+        .onas-box p {
+            margin-bottom: 0;
+            font-size: 18px;
+        }
+        .onas-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .grid-onas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 15px;
+        }
+        .grid-onas .cell-img-top {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .grid-onas .cell-txt-topright {
+            grid-column: 2;
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .grid-onas .cell-txt-bottomleft {
+            grid-column: 1;
+            grid-row: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .grid-onas .cell-img-bottom {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        @media (max-width: 768px) {
+            .grid-onas {
+                grid-template-columns: 1fr;
+            }
+            .grid-onas .cell-img-top,
+            .grid-onas .cell-txt-topright,
+            .grid-onas .cell-txt-bottomleft,
+            .grid-onas .cell-img-bottom {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
