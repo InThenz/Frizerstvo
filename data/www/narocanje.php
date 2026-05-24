@@ -1,6 +1,5 @@
 <?php
 include 'db.php';
-session_start();
 ?>
 
 <!DOCTYPE html>
@@ -22,30 +21,155 @@ session_start();
 
     <h1>NAROČANJE</h1>
 
-    <div class="calendar-box mx-auto mt-4">
+    <!-- FORM START -->
+    <form action="shrani_termin.php" method="POST">
 
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <button id="prevMonth" class="drugi-gumb">←</button>
-        <h2 id="monthYear"></h2>
-        <button id="nextMonth" class="drugi-gumb">→</button>
+          <!-- KOLEDAR -->
+      <div class="calendar-box mx-auto mt-5">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+
+          <button type="button"
+                  id="prevMonth"
+                  class="drugi-gumb">
+            ←
+          </button>
+
+          <h2 id="monthYear"></h2>
+
+          <button type="button"
+                  id="nextMonth"
+                  class="drugi-gumb">
+            →
+          </button>
+
+        </div>
+
+        <hr>
+
+        <div id="calendar"
+             class="d-grid calendar-grid">
+        </div>
+
       </div>
 
-      <hr>
+      <!-- IZBIRA ČASA -->
+      <div id="timeSelect"
+           class="mt-4 d-none">
 
-      <div id="calendar" class="d-grid calendar-grid"></div>
+        <h4>Izberite čas</h4>
 
-    </div>
+        <div class="d-flex justify-content-center gap-2 flex-wrap">
 
-    <div id="timeSelect" class="mt-4 d-none">
-      <h4>Izberite čas</h4>
-      <div class="d-flex justify-content-center gap-2">
-        <button class="drugi-gumb time-btn">10:00</button>
-        <button class="drugi-gumb time-btn">11:00</button>
-        <button class="drugi-gumb time-btn">12:00</button>
+          <button type="button"
+                  class="drugi-gumb time-btn">
+            10:00
+          </button>
+
+          <button type="button"
+                  class="drugi-gumb time-btn">
+            11:00
+          </button>
+
+          <button type="button"
+                  class="drugi-gumb time-btn">
+            12:00
+          </button>
+
+        </div>
+
       </div>
-    </div>
 
-    <button class="btn naroci-btn mt-4">NAROČI SE</button>
+      <!-- OSEBNI PODATKI -->
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-8">
+
+          <!-- IME -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Naziv</label>
+
+            <input type="text"
+                   name="naziv"
+                   class="form-control"
+                   placeholder="Vnesite ime ali naziv"
+                   required>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Email</label>
+
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   placeholder="Vnesite email"
+                   required>
+          </div>
+
+          <!-- OPOMBA -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Opomba</label>
+
+            <textarea name="opomba"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Dodatne želje ali opombe"></textarea>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- SKRITI INPUTI -->
+      <input type="hidden" name="datum" id="selectedDate">
+      <input type="hidden" name="cas" id="selectedTime">
+
+      <!-- IZBIRA FRIZERJA -->
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite frizerja
+          </label>
+
+          <select name="frizer"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="1">
+              Moško striženje
+            </option>
+
+            <option value="2">
+              Žensko striženje
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SUBMIT -->
+      <div class="mt-5">
+
+        <button type="submit"
+                class="btn naroci-btn">
+          NAROČI SE
+        </button>
+
+      </div>
+
+    </form>
+    <!-- FORM END -->
 
   </div>
 </section>

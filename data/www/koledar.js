@@ -2,6 +2,8 @@ console.log("JS dela");
 
 const calendar = document.getElementById("calendar");
 const monthYear = document.getElementById("monthYear");
+const hiddenDate = document.getElementById("selectedDate");
+const hiddenTime = document.getElementById("selectedTime");
 
 let currentDate = new Date();
 
@@ -30,15 +32,30 @@ function renderCalendar(date) {
 
   for (let day = 1; day <= daysInMonth; day++) {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.textContent = day;
     btn.classList.add("day");
 
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".day").forEach(d => d.classList.remove("selected"));
-      btn.classList.add("selected");
 
-      document.getElementById("timeSelect").classList.remove("d-none");
-    });
+  document
+    .querySelectorAll(".day")
+    .forEach(d => d.classList.remove("selected"));
+
+  btn.classList.add("selected");
+
+  // shrani datum
+  const fullDate =
+    `${year}-${month + 1}-${day}`;
+
+  hiddenDate.value = fullDate;
+
+  console.log("Izbran datum:", hiddenDate.value);
+
+  document
+    .getElementById("timeSelect")
+    .classList.remove("d-none");
+});
 
     calendar.appendChild(btn);
   }
@@ -75,6 +92,7 @@ timeButtons.forEach(button => {
     selectedTime = button.textContent;
 
     console.log("Izbran čas:", selectedTime);
+    hiddenTime.value = selectedTime;
   });
 });
 
