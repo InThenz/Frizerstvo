@@ -22,60 +22,19 @@ include 'db.php';
     <h1>NAROČANJE</h1>
 
     <!-- FORM START -->
-    <form action="shrani_termin.php" method="POST">
+    <form action="db.php" method="POST">
 
-          <!-- KOLEDAR -->
-      <div class="calendar-box mx-auto mt-5">
+      <!-- DATUM IN ČAS -->
+      <div class="row justify-content-center mt-4">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="col-md-6 text-start">
 
-          <button type="button"
-                  id="prevMonth"
-                  class="drugi-gumb">
-            ←
-          </button>
+          <label class="form-label">
+            Izberite datum in čas
+          </label>
 
-          <h2 id="monthYear"></h2>
-
-          <button type="button"
-                  id="nextMonth"
-                  class="drugi-gumb">
-            →
-          </button>
-
-        </div>
-
-        <hr>
-
-        <div id="calendar"
-             class="d-grid calendar-grid">
-        </div>
-
-      </div>
-
-      <!-- IZBIRA ČASA -->
-      <div id="timeSelect"
-           class="mt-4 d-none">
-
-        <h4>Izberite čas</h4>
-
-        <div class="d-flex justify-content-center gap-2 flex-wrap">
-
-          <button type="button"
-                  class="drugi-gumb time-btn">
-            10:00
-          </button>
-
-          <button type="button"
-                  class="drugi-gumb time-btn">
-            11:00
-          </button>
-
-          <button type="button"
-                  class="drugi-gumb time-btn">
-            12:00
-          </button>
-
+          <input type="date" name="datum" class="form-control rounded-0" required>
+          <input type="time" name="cas" class="form-control rounded-0" required>
         </div>
 
       </div>
@@ -121,9 +80,6 @@ include 'db.php';
 
       </div>
 
-      <!-- SKRITI INPUTI -->
-      <input type="hidden" name="datum" id="selectedDate">
-      <input type="hidden" name="cas" id="selectedTime">
 
       <!-- IZBIRA FRIZERJA -->
       <div class="row justify-content-center mt-4">
@@ -134,7 +90,7 @@ include 'db.php';
             Izberite frizerja
           </label>
 
-          <select name="frizer"
+          <select name="frizer_ime"
                   class="form-select"
                   required>
 
@@ -142,17 +98,80 @@ include 'db.php';
               Izberite...
             </option>
 
-            <option value="1">
+            <option value="Jure">
+              Jure
+            </option>
+
+            <option value="Anja">
+              Anja
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite spol
+          </label>
+
+          <select name="frizer_spol"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="Moški">
+              Moški
+            </option>
+
+            <option value="Ženska">
+              Ženska
+            </option>
+
+          </select>
+
+        </div>
+        
+
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite specializacijo
+          </label>
+
+          <select name="frizer_specializacija"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="Moško striženje">
               Moško striženje
             </option>
 
-            <option value="2">
+            <option value="Žensko striženje">
               Žensko striženje
             </option>
 
           </select>
 
         </div>
+        
 
       </div>
 
@@ -174,8 +193,110 @@ include 'db.php';
   </div>
 </section>
 
+<section class="container">
+  <h2>Storitve</h2>
+
+  <?php 
+    $sql_termin = "SELECT * FROM Termin";
+    $stmt = $conn->query($sql_termin);
+    $podatki_termin = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  ?>
+
+  <table>
+    <thead>id</thead>
+    <thead>Datum</thead>
+    <thead>Čas</thead>
+
+    <tbody>
+      <?php 
+        foreach($podatki_termin as $row) {
+          ?>
+
+          <tr> 
+            <td> <?= htmlspecialchars($row["id_termin"]); ?> </td>
+            <td> <?= htmlspecialchars($row["datum"]); ?> </td>
+            <td> <?= htmlspecialchars($row["cas"]); ?> </td>
+          </tr>
+
+        <?php 
+          }
+        ?>
+ </table>
+
+</section>
+
+<section class="container">
+  <h2>Podatki</h2>
+
+  <?php 
+    $sql = "SELECT * FROM Uporabnik";
+    $stmt = $conn->query($sql);
+    $podatki = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  ?>
+
+  <table>
+    <thead>id</thead>
+    <thead>naziv</thead>
+    <thead>email</thead>
+    <thead>opomba</thead>
+
+    <tbody>
+      <?php 
+        foreach($podatki as $row) {
+          ?>
+
+          <tr> 
+            <td> <?= htmlspecialchars($row["id_uporabnik"]); ?> </td>
+            <td> <?= htmlspecialchars($row["Naziv"]); ?> </td>
+            <td> <?= htmlspecialchars($row["email"]); ?> </td>
+            <td> <?= htmlspecialchars($row["Opomba"]); ?> </td>
+          </tr>
+
+        <?php 
+          }
+        ?>
+ </table>
+
+</section>
+
+
+<section class="container">
+  <h2>Podatki</h2>
+
+  <?php 
+    $sql = "SELECT * FROM Frizer";
+    $stmt = $conn->query($sql);
+    $podatki_frizer = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  ?>
+
+  <table>
+    <thead>id</thead>
+    <thead>Ime</thead>
+    <thead>Spol</thead>
+    <thead>Specializacija</thead>
+
+    <tbody>
+      <?php 
+        foreach($podatki_frizer as $row) {
+          ?>
+
+          <tr> 
+            <td> <?= htmlspecialchars($row["id_frizer"]); ?> </td>
+            <td> <?= htmlspecialchars($row["ime"]); ?> </td>
+            <td> <?= htmlspecialchars($row["spol"]); ?> </td>
+            <td> <?= htmlspecialchars($row["Specializacija"]); ?> </td>
+          </tr>
+
+        <?php 
+          }
+        ?>
+ </table>
+
+</section>
+
+
+
 <?php include 'footer.php'; ?>
-<script src="koledar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
