@@ -11,7 +11,7 @@ include 'db.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <title>Frizerstvo Friderik</title>
+    <title>Naročanje - Friderik</title>
 </head>
 <body>
     <?php include 'header.php'; ?>
@@ -21,36 +21,180 @@ include 'db.php';
 
     <h1>NAROČANJE</h1>
 
-    <div class="calendar-box mx-auto mt-4">
+    <!-- FORM START -->
+    <form action="db.php" method="POST">
 
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <button id="prevMonth" class="drugi-gumb">←</button>
-        <h2 id="monthYear"></h2>
-        <button id="nextMonth" class="drugi-gumb">→</button>
+      <!-- DATUM IN ČAS -->
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-6 text-start">
+
+          <label class="form-label">
+            Izberite datum in čas
+          </label>
+
+          <input type="date" name="datum" class="form-control rounded-0" required>
+          <input type="time" name="cas" class="form-control rounded-0" required>
+        </div>
+
       </div>
 
-      <hr>
+      <!-- OSEBNI PODATKI -->
+      <div class="row justify-content-center mt-4">
 
-      <div id="calendar" class="d-grid calendar-grid"></div>
+        <div class="col-md-8">
 
-    </div>
+          <!-- IME -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Naziv</label>
 
-    <div id="timeSelect" class="mt-4 d-none">
-      <h4>Izberite čas</h4>
-      <div class="d-flex justify-content-center gap-2">
-        <button class="drugi-gumb time-btn">10:00</button>
-        <button class="drugi-gumb time-btn">11:00</button>
-        <button class="drugi-gumb time-btn">12:00</button>
+            <input type="text"
+                   name="naziv"
+                   class="form-control"
+                   placeholder="Vnesite ime ali naziv"
+                   required>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Email</label>
+
+            <input type="email"
+                   name="email"
+                   class="form-control"
+                   placeholder="Vnesite email"
+                   required>
+          </div>
+
+          <!-- OPOMBA -->
+          <div class="mb-4 text-start">
+            <label class="form-label">Opomba</label>
+
+            <textarea name="opomba"
+                      class="form-control"
+                      rows="4"
+                      placeholder="Dodatne želje ali opombe"></textarea>
+          </div>
+
+        </div>
+
       </div>
-    </div>
 
-    <button class="btn naroci-btn mt-4">NAROČI SE</button>
+
+      <!-- IZBIRA FRIZERJA -->
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite frizerja
+          </label>
+
+          <select name="frizer_ime"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="Jure">
+              Jure
+            </option>
+
+            <option value="Anja">
+              Anja
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite spol
+          </label>
+
+          <select name="frizer_spol"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="Moški">
+              Moški
+            </option>
+
+            <option value="Ženska">
+              Ženska
+            </option>
+
+          </select>
+
+        </div>
+        
+
+      </div>
+
+      <div class="row justify-content-center mt-4">
+
+        <div class="col-md-4">
+
+          <label class="form-label">
+            Izberite specializacijo
+          </label>
+
+          <select name="frizer_specializacija"
+                  class="form-select"
+                  required>
+
+            <option value="">
+              Izberite...
+            </option>
+
+            <option value="Moško striženje">
+              Moško striženje
+            </option>
+
+            <option value="Žensko striženje">
+              Žensko striženje
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- SUBMIT -->
+      <div class="mt-5">
+
+        <button type="submit"
+                class="btn naroci-btn">
+          NAROČI SE
+        </button>
+
+      </div>
+
+    </form>
+    <!-- FORM END -->
 
   </div>
 </section>
 
 <?php include 'footer.php'; ?>
-<script src="koledar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
+
 </html>

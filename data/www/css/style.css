@@ -11971,9 +11971,13 @@ footer {
 }
 
 .day.selected {
-  background-color: #6c8ca3;
+  background-color: #6c8aa3;
   color: white;
-  transition: 0.2s;
+}
+
+.time-btn.selected-time {
+  background-color: #6c8aa3;
+  color: white;
 }
 
 .drugi-gumb {
@@ -12088,6 +12092,11 @@ footer {
     grid-column: 1;
     grid-row: auto;
   }
+}
+.form-control,
+.form-select,
+.btn {
+  border-radius: 0 !important;
 }
 
 /*# sourceMappingURL=style.css.map */
