@@ -55,10 +55,13 @@ $stmt_termin->execute([
     ":cas" => $cas
 ]);
 
+/*
 echo "Podatki so bili uspešno poslani!";
 
 
 }else {
   echo "Ni prišlo do pošiljanja podatkov.";
+}
+*/
 }
 ?>

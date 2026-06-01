@@ -20,6 +20,9 @@
         <li class="nav-item">
           <a class="nav-link fs-4" href="narocanje.php">NAROČANJE</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="tabele.php">TABELE</a>
+        </li>
       </ul>
     </div>
   </div>
