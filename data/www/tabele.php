@@ -42,6 +42,10 @@ include 'db.php';
             <td> <?= htmlspecialchars($row["id_termin"]); ?> </td>
             <td> <?= htmlspecialchars($row["datum"]); ?> </td>
             <td> <?= htmlspecialchars($row["cas"]); ?> </td>
+            <td> <a href="delete.php?id=<?= $row["id_termin"] ?>" 
+                  class="btn-delete"
+                  onclick="return confirm('Si prepričan, da želiš izbrisati termin?')">Izbriši</a>
+            </td>
           </tr>
 
         <?php 
